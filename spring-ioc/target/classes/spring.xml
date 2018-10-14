@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd"
+>
+    <!--
+    <bean id="driver" class="com.tuling.spring.DriverFactoryBean">
+        <property name="jdbcUrl" value="jdbc:mysql://localhost:3306"></property>
+    </bean>-->
+
+    <!-- 默认构造函数构建-->
+    <bean class="com.spring.ClassTest"/>
+
+    <!-- 指定构造函数构建 -->
+    <bean id="ConstructorTest" class="com.spring.ConstructorTest" autowire="byName">
+        <constructor-arg index="0" type="java.lang.String" value="lucifer"/>
+        <constructor-arg name="sex" type="int" value="1"/>
+    </bean>
+
+    <!-- ByName创建 -->
+    <bean id="bnt" class="com.spring.ByNameTest"></bean>
+
+    <!-- 静态工厂创建 -->
+    <bean class="com.spring.StaticFactoryTest" factory-method="build">
+        <constructor-arg name="type" value="A"></constructor-arg>
+    </bean>
+
+    <!-- FactoryBean创建 -->
+    <bean id="driver" class="com.spring.DriverFactoryBeanTest">
+        <property name="jdbcUrl" value="jdbc:mysql://localhost:3306"></property>
+    </bean>
+</beans>
